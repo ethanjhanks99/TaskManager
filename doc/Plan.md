@@ -24,4 +24,13 @@
     * The relationship between folders and tasks are many to one
       * One folder has many tasks
       * A task can be stored in one folder
+  * Users can filter tasks
+    * Filter by folder
+    * Filter by due date
+  * Users can search for tasks
+    * Should be able to filter their search
+* What I already know how to do
+  * Create endpoints in .NET
+* What I don't know how to do
+  * Instantiate and use models in .NET
 
