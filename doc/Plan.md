@@ -33,4 +33,25 @@
   * Create endpoints in .NET
 * What I don't know how to do
   * Instantiate and use models in .NET
+  * Implement authentication in .NET
+* Data used by the prgram
+  * Request methods - string
+    * Used to determine the kind of action that needs to be performed
+  * Request url - string
+    * Used to map to the proper endpoint
+  * Request headers - string
+    * Used to transfer additional data needed by the endpoint
+  * Request body - string
+    * Used when an endpoint is supposed to do something to data
+* Algorithms that will be needed
+  * Algorithm to take data and create a task
+  * Algorithm to take data and update a task
+  * Algorithm to fetch multiple tasks (filtered or unfiltered)
+  * Algorithm to fetch a specific task
+  * Algorithm to delete a specific task
+  * Algorithm to create a folder
+  * Algortihm to delete a folder (and all of the tasks inside the folder)
+  * Algortihm to add a task to a folder
+  * Algorithm to create an account
+  * Algorithm to log into an account
 
