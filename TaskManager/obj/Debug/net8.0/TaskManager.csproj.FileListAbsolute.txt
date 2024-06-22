@@ -23,3 +23,9 @@
 /Users/ethanhanks/personalProjects/Cs/TaskManager/TaskManager/obj/Debug/net8.0/TaskManager.pdb
 /Users/ethanhanks/personalProjects/Cs/TaskManager/TaskManager/obj/Debug/net8.0/TaskManager.genruntimeconfig.cache
 /Users/ethanhanks/personalProjects/Cs/TaskManager/TaskManager/obj/Debug/net8.0/ref/TaskManager.dll
+/Users/ethanhanks/personalProjects/Cs/TaskManager/TaskManager/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.dll
+/Users/ethanhanks/personalProjects/Cs/TaskManager/TaskManager/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.Abstractions.dll
+/Users/ethanhanks/personalProjects/Cs/TaskManager/TaskManager/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.InMemory.dll
+/Users/ethanhanks/personalProjects/Cs/TaskManager/TaskManager/obj/Debug/net8.0/TaskManager.csproj.AssemblyReference.cache
+/Users/ethanhanks/personalProjects/Cs/TaskManager/TaskManager/obj/Debug/net8.0/TaskManager.sourcelink.json
+/Users/ethanhanks/personalProjects/Cs/TaskManager/TaskManager/obj/Debug/net8.0/TaskMana.F3FB485A.Up2Date

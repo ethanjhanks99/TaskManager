@@ -63,16 +63,17 @@
 
 ### Models
 
-* Task.cs
-  * This is the model for a task
-  * Will have three fields
-    1. `Id` - int
-      * The id number for the task
-    2. `Title` - string
-      * The name of the task
-    3. `Description` - string
-      * A brief description of the task, including any notes pertaining to it
-  * The `Id` and `Name` are required fields, but the description can be nullible
+#### `Task.cs`
+
+* This is the model for a task
+* Will have three fields
+  1. `Id` - int
+    * The id number for the task
+  2. `Title` - string
+    * The name of the task
+  3. `Description` - string
+    * A brief description of the task, including any notes pertaining to it
+* The `Id` and `Name` are required fields, but the description can be nullible
 
 ```cs
 namespace Task.Models
@@ -85,4 +86,9 @@ namespace Task.Models
   }
 }
 ```
+
+#### `TasksDb.cs`
+
+* This is the database context for the `Task` model
+
 
