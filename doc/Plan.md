@@ -90,5 +90,16 @@ namespace Task.Models
 #### `TasksDb.cs`
 
 * This is the database context for the `Task` model
+* This db context will use the `Task` model as the DbSet
 
+```cs
+using Task.Models
+using EntityFrameworkCore
 
+namespace Task.Data
+
+public class TaskDb : DbContext
+{
+  public DbSet<Task> Tasks { get and set }
+}
+```
