@@ -66,13 +66,18 @@
 #### `Task.cs`
 
 * This is the model for a task
-* Will have three fields
+* Will have a many to one relationship with the `Folder` model
+* Will have five fields
   1. `Id` - int
     * The id number for the task
   2. `Title` - string
     * The name of the task
   3. `Description` - string
     * A brief description of the task, including any notes pertaining to it
+  4. `FolderId` - int
+    * Foreign key for the cooresponding `Folder`
+  5. `Folder` - Folder
+    * Reference navigation to cooresponding `Folder`
 * The `Id` and `Name` are required fields, but the description can be nullible
 
 ```cs
@@ -103,3 +108,29 @@ public class TaskDb : DbContext
   public DbSet<Task> Tasks { get and set }
 }
 ```
+
+#### `TaskFolder.cs`
+
+* This model represents a folder, which can hold many tasks
+* Will have a many to one relationship with the `Task` model
+* Will have three fields
+  1. `Id` - int
+    * The id number for the folder
+  2. `Title` - string
+    * The name of the folder
+  3. `Tasks` - List<Task>
+    * The list of tasks held in that folder
+
+```cs
+namespace Folder.Model
+{
+  public class Folder
+  {
+    public int Id
+    public string Title
+    public List<Task> Tasks
+  }
+}
+```
+
+
