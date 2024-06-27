@@ -88,6 +88,8 @@ namespace Task.Models
     public int Id
     public string Title
     public nullable string Description
+    public int FolderId
+    public Folder Folder
   }
 }
 ```
@@ -109,7 +111,7 @@ public class TaskDb : DbContext
 }
 ```
 
-#### `TaskFolder.cs`
+#### `Folder.cs`
 
 * This model represents a folder, which can hold many tasks
 * Will have a many to one relationship with the `Task` model
@@ -129,6 +131,28 @@ namespace Folder.Model
     public int Id
     public string Title
     public List<Task> Tasks
+  }
+}
+```
+
+#### `FolderDb.cs`
+
+* This is the database context for the `Folder` model
+* When the database is created, a default folder will be created
+
+```cs
+using Task.Models
+using EntityFrameworkCore
+
+namespace Task
+
+public class FolderDb : DbContext
+{
+  public DbSet<Folder> Folders { get and set}
+  protected override void OnModelCreating(ModelBuilder modelBuilder)
+  {
+    modelbuilder.Entity<Folder>().HasData(
+      new Folder{Id = 1, Title = "Misc."};
   }
 }
 ```
