@@ -5,8 +5,7 @@ using TaskManager.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var connectionString = builder.Configuration.GetConnectionString("tasks") ?? "Data Source = tasks.db";
-builder.Services.AddDbContext<TaskDb>(options => options.UseSqlite(connectionString));
+builder.Services.AddDbContext<TaskDb>();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>

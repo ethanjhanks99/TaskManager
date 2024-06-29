@@ -94,23 +94,6 @@ namespace Task.Models
 }
 ```
 
-#### `TasksDb.cs`
-
-* This is the database context for the `Task` model
-* This db context will use the `Task` model as the DbSet
-
-```cs
-using Task.Models
-using EntityFrameworkCore
-
-namespace Task.Data
-
-public class TaskDb : DbContext
-{
-  public DbSet<Task> Tasks { get and set }
-}
-```
-
 #### `Folder.cs`
 
 * This model represents a folder, which can hold many tasks
@@ -124,6 +107,7 @@ public class TaskDb : DbContext
     * The list of tasks held in that folder
 
 ```cs
+
 namespace Folder.Model
 {
   public class Folder
@@ -135,26 +119,46 @@ namespace Folder.Model
 }
 ```
 
-#### `FolderDb.cs`
+#### `TasksDb.cs`
 
-* This is the database context for the `Folder` model
-* When the database is created, a default folder will be created
+* Works as the database context for the program
 
 ```cs
 using Task.Models
 using EntityFrameworkCore
 
-namespace Task
+namespace TaskManager.Data
 
-public class FolderDb : DbContext
+public class TaskDb : DbContext
 {
-  public DbSet<Folder> Folders { get and set}
-  protected override void OnModelCreating(ModelBuilder modelBuilder)
-  {
-    modelbuilder.Entity<Folder>().HasData(
-      new Folder{Id = 1, Title = "Misc."};
-  }
+  public DbSet<Task> Tasks { get and set }
+  public DbSet<Folder> Folders { get and set }
 }
 ```
+
+### Endpoints
+
+The API will use the following endpoints
+
+* Get Tasks
+  * An endpoint that returns all tasks in the database
+* Get Task
+  * An enpoint that returns a single task
+* Get Folders
+  * An endpoint that returns all folders in the database
+* Get Folder
+  * An endpoint that returns all the tasks from a certain folder
+* Post Task
+  * An endpoint that creates a task
+* Post Folder
+  * An endpoint that creates a folder
+* Put Task
+  * An endpoint that updates a task
+* Put Folder
+  * An endpoint that updates a folder
+* Delete Task
+  * An endpoint that deletes a task
+* Delete Folder
+  * An endpoint that deletes a folder and all the tasks in it
 
 
