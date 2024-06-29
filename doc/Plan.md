@@ -161,4 +161,32 @@ The API will use the following endpoints
 * Delete Folder
   * An endpoint that deletes a folder and all the tasks in it
 
+#### Get Tasks
+
+* This endpoint returns all Tasks in the database
+* Must be done asynchronously, as the API has to wait for the data
+* URI - "/tasks"
+
+```cs
+Get("/tasks", async(TaskDb database) => await database results)
+```
+
+#### Get Task
+
+* This endpoint returns a specific task
+* Will be done asynchronously
+* URI - "/tasks/id"
+
+```cs
+Get("/tasks/id", async(TaskDb database, int id) =>
+{
+  Task task = await database Tasks find (id)
+
+  if task is null return NotFound
+  return task
+}
+```
+
+
+    
 
