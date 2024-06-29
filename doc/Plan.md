@@ -257,5 +257,24 @@ Put("/tasks/id", async(TaskDb database, Task newTask, int id) =>
 }
 ```
 
+#### Put Folder
+
+* This endpoint updates a specific folder in the database
+* URI - "/folders/folderid"
+
+```cs
+Put("/folders/folderId", async(TaskDb database, Folder newFolder, int folderId) =>
+{
+  Folder folder = await database Folder find (folderId)
+  if folder is null return NotFound
+
+  folder title = newFolder title
+
+  await save changes
+  return NoContent
+}
+```
+
+
 
 
