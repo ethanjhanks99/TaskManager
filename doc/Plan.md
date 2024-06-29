@@ -293,5 +293,22 @@ Delete("/tasks/id", async(TaskDb database, int id) =>
 }
 ```
 
+#### Delete Folder
+
+* This endpoint deletes a specific folder from the database and all the tasks in that folder
+* URI - "/folders/folderId"
+
+```cs
+Delete("/folders/folderId", async(Taskdb database, int folderId) =>
+{
+  Folder folder = await database Folder find (folderId)
+  if folder is null return NotFound
+
+  database remove folder
+  await save changes
+
+ return NoContent
+}
+```
 
 
