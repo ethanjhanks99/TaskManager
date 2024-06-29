@@ -275,6 +275,23 @@ Put("/folders/folderId", async(TaskDb database, Folder newFolder, int folderId) 
 }
 ```
 
+#### Delete Task
+
+* This endpoint deletes a specific task from the database
+* URI - "/tasks/id"
+
+```cs
+Delete("/tasks/id", async(TaskDb database, int id) =>
+{
+  Task task = await database Task find (id)
+  if task is null return NotFound
+  
+  database remove task
+  await save changes
+
+  return NoContent
+}
+```
 
 
 
