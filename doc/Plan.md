@@ -209,6 +209,21 @@ Get("/folders/folderId", async(TaskDb database, int folderId) =>
 }
 ```
 
+#### Post Task
+
+* This endpoint creates a task object and adds it to the database
+* URI - "/tasks"
+
+```cs
+Post("/tasks", async(TaskDb database, Task task) => 
+{
+  database add task
+  await save changes
+  return created results
+}
+```
+
+
 
 
     
