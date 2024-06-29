@@ -223,7 +223,19 @@ Post("/tasks", async(TaskDb database, Task task) =>
 }
 ```
 
+#### Post Folder
 
+* This endpoint creates a new folder
+* URI - "/folders"
+
+```cs
+Post("/folders", async(TaskDb database, Folder folder) => 
+{
+  database add folder
+  await save changes
+  return created results
+}
+```
 
 
     
