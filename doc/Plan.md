@@ -187,6 +187,29 @@ Get("/tasks/id", async(TaskDb database, int id) =>
 }
 ```
 
+#### Get Folders
+
+* This endpoint returns a list of all folders in the database
+* Will be done asynchronously
+* URI - "/folders"
+
+```cs
+Get("/folders", async(TaskDb database) => await database results)
+```
+
+#### Get Folder
+
+* This endpoint returns all tasks that belong to a specific folder
+* URI - "/folders/folderId"
+
+```cs
+Get("/folders/folderId", async(TaskDb database, int folderId) =>
+{
+  await database results where Task.FolderId == folderId
+}
+```
+
+
 
     
 
