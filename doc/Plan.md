@@ -320,3 +320,21 @@ Delete("/folders/folderId", async(Taskdb database, int folderId) =>
 ### Endpoints
 
 * No issues while implementing endpoints
+
+## Testing
+
+* Creating a task (no folder)
+
+* Updating a task (no folder)
+
+* Deleting a task (no folder)
+
+* Creating a folder
+
+* Updating a folder
+
+* Creating a task (with folder)
+
+* Updating a task (with folder)
+
+* Deleting a task (with folder)
