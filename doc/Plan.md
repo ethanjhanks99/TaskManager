@@ -311,4 +311,12 @@ Delete("/folders/folderId", async(Taskdb database, int folderId) =>
 }
 ```
 
+## Implementation
 
+### Models
+
+* All models were implemented and migrated well
+
+### Endpoints
+
+* No issues while implementing endpoints
