@@ -323,18 +323,79 @@ Delete("/folders/folderId", async(Taskdb database, int folderId) =>
 
 ## Testing
 
+* Running the project
+  * When running project, errors regarding not being able to convert an int to either a `TaskObj` or `Folder`
+  * Problem:
+    * In both of the delete endpoints, I attempted to remove objects from their database by passing thier `id` in the
+      `Remove` method
+```cs
+app.MapDelete("/tasks/{id}", async (TaskDb db, int id) =>
+{
+  TaskObj task = await db.Tasks.FindAsync(id);
+  if (task is null) return Results.NotFound();
+
+  db.Tasks.Remove(id);
+  await db.SaveChangesAsync();
+  return Results.NoContent();
+});
+
+app.MapDelete("/folders/{folderId}", async(TaskDb db, int folderId) =>
+{
+  Folder folder = await db.Folders.FindAsync(folderId);
+  if (folder is null) return Results.NotFound();
+
+  db.Folders.Remove(folderId);
+  await db.SaveChangesAsync();
+  return Results.NoContent();
+});
+```
+  * Fix:
+    * I replaced the id with the objects found using the `FindAsync` methods
+```cs
+app.MapDelete("/tasks/{id}", async (TaskDb db, int id) =>
+{
+  TaskObj task = await db.Tasks.FindAsync(id);
+  if (task is null) return Results.NotFound();
+
+  db.Tasks.Remove(task);
+  await db.SaveChangesAsync();
+  return Results.NoContent();
+});
+
+app.MapDelete("/folders/{folderId}", async(TaskDb db, int folderId) =>
+{
+  Folder folder = await db.Folders.FindAsync(folderId);
+  if (folder is null) return Results.NotFound();
+
+  db.Folders.Remove(folder);
+  await db.SaveChangesAsync();
+  return Results.NoContent();
+});
+```
 * Creating a task (no folder)
-
+  * Creating a task with no folder works as expected
 * Updating a task (no folder)
-
+  * Updating a task with no folder works as expected
 * Deleting a task (no folder)
-
+  * Deleting a task with no folder works as expected
 * Creating a folder
-
+  * Creating a folder works as expected
 * Updating a folder
-
+  * Updating a folder works as expected
+* Deleting a folder (with no tasks)
+  * Deleting a folder with no tasks works as expected
 * Creating a task (with folder)
+  * Creating a task with a folder does not work as expected
+  * Error:
+    * SQLite Error 19
+    * Seems to be an issue with the foreign keys
+  * Fixes
+    * I'll try to alter the endpoint by adding a parameter for a folder id.
+      That way I can find a folder if an id is provided, and set the actual
+      folder object as to the task object
 
 * Updating a task (with folder)
 
 * Deleting a task (with folder)
+
+* Deleting a folder (with tasks)
