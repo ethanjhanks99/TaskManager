@@ -393,7 +393,7 @@ app.MapDelete("/folders/{folderId}", async(TaskDb db, int folderId) =>
     * I'll try to alter the endpoint by adding a parameter for a folder id.
       That way I can find a folder if an id is provided, and set the actual
       folder object as to the task object
-
+      * New error; causing an infinite loop between the `Tasks` and `Folders` tables
 * Updating a task (with folder)
 
 * Deleting a task (with folder)
