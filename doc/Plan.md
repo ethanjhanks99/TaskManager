@@ -389,13 +389,21 @@ app.MapDelete("/folders/{folderId}", async(TaskDb db, int folderId) =>
   * Error:
     * SQLite Error 19
     * Seems to be an issue with the foreign keys
-  * Fixes
-    * I'll try to alter the endpoint by adding a parameter for a folder id.
-      That way I can find a folder if an id is provided, and set the actual
-      folder object as to the task object
-      * New error; causing an infinite loop between the `Tasks` and `Folders` tables
+    * Fix
+      * I'll try to alter the endpoint by adding a parameter for a folder id.
+        That way I can find a folder if an id is provided, and set the actual
+        folder object as to the task object
+  * Error
+    * Causing an infinite loop between the `Tasks` and `Folders` tables
+    * Fix
+      * I updated the `TaskObj` model so that the `Folder` key is not included in the Json
 * Updating a task (with folder)
-
+  * Updating a task with folder works as expected
 * Deleting a task (with folder)
-
+  * Deleting a task with folder works as expected
 * Deleting a folder (with tasks)
+  * Error
+    * SQLite error 19
+    * Foreign key error
+    * Fix
+      
