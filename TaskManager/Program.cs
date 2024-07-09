@@ -27,7 +27,19 @@ app.MapGet("/", () => "Hello World!");
 
 app.MapPost("/tasks", async (TaskDb db, TaskObj task) => 
 {
-  await db.Tasks.AddAsync(task);
+  if (task.FolderId is not null)
+  {
+    var folder = await db.Folders.FindAsync(task.FolderId);
+    if (folder is null) return Results.NotFound();
+    task.Folder = folder;
+    await db.Tasks.AddAsync(task);
+    folder.Tasks.Add(task);
+
+  } 
+  else
+  {
+    await db.Tasks.AddAsync(task);
+  }
   await db.SaveChangesAsync();
   return Results.Created($"/task/{task.Id}", task);
 });
@@ -43,7 +55,7 @@ app.MapGet("/tasks", async (TaskDb db) => await db.Tasks.ToListAsync());
 
 app.MapGet("/tasks/{id}", async (TaskDb db, int id) =>
 {
-  TaskObj task = await db.Tasks.FindAsync(id);
+  var task = await db.Tasks.FindAsync(id);
   if (task is null) return Results.NotFound();
   return Results.Ok(task);
 });
@@ -52,14 +64,14 @@ app.MapGet("/folders", async (TaskDb db) => await db.Folders.ToListAsync());
 
 app.MapGet("/folders/{folderId}", async (TaskDb db, int folderId) =>
 {
-  Folder folder = await db.Folders.FindAsync(folderId);
+  var folder = await db.Folders.FindAsync(folderId);
   if (folder is null) return Results.NotFound();
   return Results.Ok(folder);
 });
 
 app.MapPut("/tasks/{id}", async (TaskDb db, TaskObj newTask, int id) =>
 {
-  TaskObj task = await db.Tasks.FindAsync(id);
+  var task = await db.Tasks.FindAsync(id);
   if (task is null) return Results.NotFound();
 
   task.Title = newTask.Title;
@@ -74,7 +86,7 @@ app.MapPut("/tasks/{id}", async (TaskDb db, TaskObj newTask, int id) =>
 
 app.MapPut("/folders/{folderId}", async (TaskDb db, Folder newFolder, int folderId) =>
 {
-  Folder folder = await db.Folders.FindAsync(folderId);
+  var folder = await db.Folders.FindAsync(folderId);
   if (folder is null) return Results.NotFound();
 
   folder.Title = newFolder.Title;
@@ -85,20 +97,20 @@ app.MapPut("/folders/{folderId}", async (TaskDb db, Folder newFolder, int folder
 
 app.MapDelete("/tasks/{id}", async (TaskDb db, int id) =>
 {
-  TaskObj task = await db.Tasks.FindAsync(id);
+  var task = await db.Tasks.FindAsync(id);
   if (task is null) return Results.NotFound();
 
-  db.Tasks.Remove(id);
+  db.Tasks.Remove(task);
   await db.SaveChangesAsync();
   return Results.NoContent();
 });
 
 app.MapDelete("/folders/{folderId}", async(TaskDb db, int folderId) =>
 {
-  Folder folder = await db.Folders.FindAsync(folderId);
+  var folder = await db.Folders.FindAsync(folderId);
   if (folder is null) return Results.NotFound();
 
-  db.Folders.Remove(folderId);
+  db.Folders.Remove(folder);
   await db.SaveChangesAsync();
   return Results.NoContent();
 });

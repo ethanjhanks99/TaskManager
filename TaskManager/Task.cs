@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using Microsoft.EntityFrameworkCore;
 
 namespace TaskManager.Models
@@ -11,6 +12,8 @@ namespace TaskManager.Models
 
     // Foreign Key
     public int? FolderId { get; set;}
+
+    [JsonIgnore]
     public Folder? Folder { get; set; }
   }
 }

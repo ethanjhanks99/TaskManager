@@ -12,6 +12,7 @@ namespace TaskManager.Data
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         optionsBuilder.UseSqlite("Data Source=taskmanager.db");
+        optionsBuilder.LogTo(Console.WriteLine);
     }
     
   }
